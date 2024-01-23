@@ -8,6 +8,7 @@
               class="fs-3 btn bi bi-list p-0"
               data-bs-target="#sideBar"
               data-bs-toggle="collapse"
+              @click="toggleSideBarOpenFunctionInParent"
             ></btn>
           </div>
           <div class="col-6 p-0 h-100 text-nowrap"><h3>Keep-i</h3></div>
@@ -33,7 +34,7 @@
             <div class="">
               <div class="">
                 <button
-                  class="fs-4 bi bi-person-circle btn dropdown-toggle"
+                  class="fs-4 bi bi-person-circle btndropdown-toggle border-0 bg-transparent"
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -62,6 +63,13 @@
 </template>
 
 <script>
+export default {
+  methods: {
+    toggleSideBarOpenFunctionInParent() {
+      this.$parent.toggleSideBarOpen()
+    }
+  }
+}
 </script>
 
 <style scoped>
