@@ -1,31 +1,33 @@
 <template>
   <div>
     <div class="d-flex mb-4" style="height: auto">
-      <div class="shadow rounded p-1" id="addTask">
-        <div class="input-group input-group-sm">
+      <div class="shadow rounded p-3" id="addTask">
+        <div class="input-group">
           <input
             id="noteTitleInput"
             placeholder="Title"
             type="text"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
+            v-model="titleInputText"
             @input="setTitle($event.target.value)"
             class="form-control border-0"
           />
         </div>
         <hr class="m-0" />
-        <div class="input-group">
+        <div class="input-group input-group-sm">
           <textarea
             id="noteDescriptionTextArea"
             :style="{ height: this.textAreaHeight }"
             ref="textArea"
-            placeholder="Take a note..."
+            placeholder=" Take a note..."
             aria-label="With textarea"
+            v-model="descriptionTextAreaText"
             @input="setDescription($event.target.value)"
             class="form-control border-0"
           ></textarea>
         </div>
-        <div class="d-flex flex-wrap" style="list-style-type: none">
+        <div class="d-flex flex-wrap ms-2" style="list-style-type: none">
           <TagComponent v-for="(listedTag, index) in listedTags" :key="index" :tag="listedTag" />
           <div class="dropdown">
             <button
@@ -127,8 +129,10 @@
             </ul>
           </div>
         </div>
-        <div class="d-flex justify-content-around">
-          <button type="button" class="btn btn-outline-secondary">cancel that shyet</button>
+        <div class="mt-3 d-flex justify-content-around">
+          <button type="button" class="btn btn-outline-secondary" @click="clearFields">
+            cancel that shyet
+          </button>
           <i></i>
           <button type="button" class="btn btn-outline-success" @click="saveNote">
             save that shyet
@@ -163,8 +167,6 @@ export default {
       notes: [],
       tags: [],
       listedTags: [],
-      title: '',
-      description: '',
       tagName: '',
       colors: [
         'pastel-yellow',
@@ -197,7 +199,9 @@ export default {
         'pastel-seafoam',
         'pastel-cotton-candy',
         'pastel-silver'
-      ]
+      ],
+      titleInputText: '',
+      descriptionTextAreaText: ''
     }
   },
   mounted() {
@@ -206,6 +210,10 @@ export default {
     console.log('mount')
   },
   methods: {
+    clearFields() {
+      this.titleInputText = ''
+      this.descriptionTextAreaText = ''
+    },
     animate(value) {
       value.classList.add('noteAnimate')
     },
@@ -216,10 +224,10 @@ export default {
     },
     saveNote() {
       this.notes.unshift({
-        title: this.title,
-        description: this.description
+        title: this.titleInputText,
+        description: this.descriptionTextAreaText
       })
-      console.log(this.notes)
+      this.clearFields()
     },
     createTag() {
       // console.log('' + typeof this.randomColor())
