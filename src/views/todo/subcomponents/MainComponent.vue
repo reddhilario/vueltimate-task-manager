@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="d-flex mb-4" style="height: auto">
+  <div class="d-flex flex-column flex-fill">
+    <div class="d-flex mb-4 w-100 justify-content-center" style="height: auto">
       <div class="shadow rounded p-3" id="addTask">
         <div class="input-group">
           <input
@@ -140,14 +140,16 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <NoteComponent
-        v-for="(note, index) in this.notes"
-        :key="index"
-        :notes="note"
-        :id="index"
-        @click="animate($event.target)"
-      />
+    <div class="w-100 d-flex justify-content-center">
+      <div class="d-flex flex-row flex-wrap" style="width: 1200px">
+        <NoteComponent
+          v-for="(note, index) in this.notes"
+          :key="index"
+          :notes="note"
+          :id="index"
+          @click="animate($event.target)"
+        />
+      </div>
     </div>
   </div>
 </template>

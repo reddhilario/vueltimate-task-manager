@@ -1,11 +1,11 @@
 <template>
   <div class="container-fluid p-0" style="height: 100vh">
     <TopNavigationComponent />
-    <div class="row w-100">
-      <div class="col" style="width: 280px">
+    <div class="d-flex flex-row">
+      <div class="" style="width: 280px">
         <SideNavigationComponent :sideBarStatus="this.sideBarOpen" />
       </div>
-      <div class="col-8 d-flex">
+      <div class="d-flex flex-fill justify-content-center">
         <TaskContainerComponent />
       </div>
     </div>
