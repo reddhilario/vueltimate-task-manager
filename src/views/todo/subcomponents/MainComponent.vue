@@ -4,53 +4,37 @@
       <div class="shadow rounded p-1" id="addTask">
         <div class="input-group input-group-sm">
           <input
+            id="noteTitleInput"
             placeholder="Title"
             type="text"
-            class="form-control border-0"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
             @input="setTitle($event.target.value)"
+            class="form-control border-0"
           />
         </div>
         <hr class="m-0" />
         <div class="input-group">
           <textarea
+            id="noteDescriptionTextArea"
             :style="{ height: this.textAreaHeight }"
             ref="textArea"
             placeholder="Take a note..."
-            class="form-control border-0"
             aria-label="With textarea"
             @input="setDescription($event.target.value)"
+            class="form-control border-0"
           ></textarea>
         </div>
         <div class="d-flex flex-wrap" style="list-style-type: none">
-          <!-- <div
-            class="rounded-pill btn-group dropdown"
-            style="height: 10px; width: 30px"
-            @click="addTag"
-          >
-            <button
-              type="button"
-              class="btn btn-secondary dropdown-toggle"
-              id="tagDropDownButton"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            ></button>
-            <ul class="dropdown-menu" aria-labelledby="tagDropDownButton">
-              <li class="dropdown-item">
-                <div class="rounded-pill bg-warning" style="height: 10px; width: 30px"></div>
-              </li>
-            </ul>
-          </div> -->
           <TagComponent v-for="(listedTag, index) in listedTags" :key="index" :tag="listedTag" />
           <div class="dropdown">
             <button
-              class="btndropdown-toggle rounded-pill pb-2 border-0"
-              type="button"
               id="tagDropDownButton"
+              type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
               style="height: auto; width: auto"
+              class="btndropdown-toggle rounded-pill pb-2 border-0"
             >
               <p class="m-0 p-0" style="font-size: 0.7em; height: 1em">Add Tag</p>
             </button>
@@ -60,12 +44,13 @@
               style="width: 300px; height: 200px; overflow: auto; background: rgb(68, 76, 92)"
             >
               <input
-                class="w-100 border border-secondary border-end-0 border-start-0 border-top-0"
+                id="tagNameInput"
                 type="text"
                 style="overflow: hidden; background: transparent; font-size: small; color: white"
                 placeholder="Search or Create"
                 @input="setTagName($event.target.value)"
                 @keyup.enter="createTag"
+                class="w-100 border border-secondary border-end-0 border-start-0 border-top-0"
               />
               <div class="d-flex flex-column">
                 <li
@@ -260,16 +245,6 @@ export default {
       this.tagName = value
     },
     randomColor() {
-      //   console.log(
-      //     '' +
-      //       JSON.stringify(this.colors[Math.floor(Math.random() * this.colors.length)]).substring(
-      //         1,
-      //         JSON.stringify(this.colors[Math.floor(Math.random() * this.colors.length)]).length + 1
-      //       )
-      //   )
-      //   return this.colors[Math.random() * this.colors.length]
-      console.log('' + typeof this.colors[Math.floor(Math.random() * this.colors.length)])
-
       return this.colors[Math.floor(Math.random() * this.colors.length)]
     }
   }

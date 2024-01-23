@@ -31,7 +31,6 @@ export default {
   methods: {
     toggleSideBarOpen() {
       this.sideBarOpen = !this.sideBarOpen
-      console.log('Parent Component: ' + this.sideBarOpen)
     }
   }
 }
