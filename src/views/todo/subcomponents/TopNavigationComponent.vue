@@ -1,9 +1,9 @@
 <template>
   <div class="p-0">
-    <nav class="navbar navbar-light bg-light p-0">
+    <nav id="idddd" class="navbar navbar-light bg-light p-0">
       <div class="w-100 d-flex">
         <div class="row navBarDiv ms-3 me-3">
-          <div class="col-6 h-100">
+          <div class="col-6 h-100 ps-0">
             <btn
               class="fs-3 btn bi bi-list p-0"
               data-bs-target="#sideBar"
