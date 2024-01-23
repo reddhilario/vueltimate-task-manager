@@ -225,11 +225,13 @@ export default {
       console.log(this.textAreaheight)
     },
     saveNote() {
-      this.notes.unshift({
-        title: this.titleInputText,
-        description: this.descriptionTextAreaText
-      })
-      this.clearFields()
+      if (!((this.titleInputText.length && this.descriptionTextAreaText.length) === 0)) {
+        this.notes.unshift({
+          title: this.titleInputText,
+          description: this.descriptionTextAreaText
+        })
+        this.clearFields()
+      } else alert('no empty fields SIR')
     },
     createTag() {
       // console.log('' + typeof this.randomColor())
