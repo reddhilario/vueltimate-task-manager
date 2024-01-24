@@ -131,12 +131,10 @@
         </div>
         <div class="mt-3 d-flex justify-content-around">
           <button type="button" class="btn btn-outline-secondary" @click="clearFields">
-            cancel that shyet
+            Cancel
           </button>
           <i></i>
-          <button type="button" class="btn btn-outline-success" @click="saveNote">
-            save that shyet
-          </button>
+          <button type="button" class="btn btn-outline-success" @click="saveNote">Save</button>
         </div>
       </div>
     </div>

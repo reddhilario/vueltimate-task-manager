@@ -2,33 +2,33 @@
   <div class="w-100">
     <div class="d-flex flex-column choice expand" ref="choice">
       <!-- start of individual row-->
-      <div class="d-flex flex-row" style="width: 180px; height: 45px">
+      <div class="d-flex flex-row" style="width: 200px; height: 45px">
         <i class="fs-5 bi bi-lightbulb col-2 me-3"></i>
-        <p class="mt-1 text-center text-nowrap">Notes</p>
+        <p class="text-center text-nowrap" style="margin-top: 6px">Notes</p>
       </div>
       <!-- end of individual row-->
       <!-- start of individual row-->
       <div class="d-flex flex-row" style="width: 200px; height: 45px">
         <i class="fs-5 bi bi-bell col-2 me-3"></i>
-        <p class="mt-1 text-center text-nowrap" style="width: 75px">Reminders</p>
+        <p class="mt-1 text-center text-nowrap" style="width: 75px; margin-top: 6px">Reminders</p>
       </div>
       <!-- end of individual row-->
       <!-- start of individual row-->
       <div class="d-flex flex-row" style="width: 200px; height: 45px">
         <i class="fs-5 bi bi-pencil col-2 me-3"></i>
-        <p class="mt-1 text-center text-nowrap" style="width: 75px">Edit Labels</p>
+        <p class="mt-1 text-center text-nowrap" style="width: 75px; margin-top: 6px">Edit Labels</p>
       </div>
       <!-- end of individual row-->
       <!-- start of individual row-->
       <div class="d-flex flex-row" style="width: 200px; height: 45px">
         <i class="fs-5 bi bi-archive col-2 me-3"></i>
-        <p class="mt-1 text-center text-nowrap">Archive</p>
+        <p class="mt-1 text-center text-nowrap" style="margin-top: 6px">Archive</p>
       </div>
       <!-- end of individual row-->
       <!-- start of individual row-->
       <div class="d-flex flex-row" style="width: 200px; height: 45px">
-        <i class="fs-5 bi bi-trash col-2 text-dark me-3"></i>
-        <p class="mt-1 text-center text-nowrap">Trash</p>
+        <i class="fs-5 bi bi-trash col-2 me-3"></i>
+        <p class="mt-1 text-center text-nowrap" style="margin-top: 6px">Trash</p>
       </div>
       <!-- end of individual row-->
       <!-- 

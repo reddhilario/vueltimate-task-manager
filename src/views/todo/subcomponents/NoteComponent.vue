@@ -1,6 +1,6 @@
 <template>
   <div style="width: 283px; height: 108px" class="ms-3 mt-3">
-    <div id="note" class="align-self-start border rounded p-1" style="width: 283px; height: 108px">
+    <div id="note" class="align-self-start border rounded p-3" style="width: 283px; height: 108px">
       <div>
         <p class="m-0">{{ notes.title }}</p>
       </div>
