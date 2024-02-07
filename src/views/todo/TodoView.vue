@@ -6,7 +6,8 @@
         <SideNavigationComponent :sideBarStatus="this.sideBarOpen" />
       </div>
       <div class="d-flex flex-fill justify-content-center">
-        <TaskContainerComponent />
+        <TaskContainerComponent v-if="taskIsActive" />
+        <NewPageComponent v-if="newPageIsActive" />
       </div>
     </div>
   </div>
@@ -16,17 +17,20 @@
 import TopNavigationComponent from './subcomponents/TopNavigationComponent.vue'
 import SideNavigationComponent from './subcomponents/SideNavigationComponent.vue'
 import TaskContainerComponent from './subcomponents/MainComponent.vue'
+import NewPageComponent from './subcomponents/NewPageComponent.vue'
 
 export default {
   data() {
     return {
-      sideBarOpen: false
+      sideBarOpen: false,
+      newPageIsActive: true
     }
   },
   components: {
     TopNavigationComponent,
     SideNavigationComponent,
-    TaskContainerComponent
+    TaskContainerComponent,
+    NewPageComponent
   },
   methods: {
     toggleSideBarOpen() {
