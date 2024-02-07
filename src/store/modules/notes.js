@@ -68,6 +68,7 @@ const actions = {
     flipStatus({
         commit
     }) {
+        console.log('flipped')
         commit('FLIP_STATUS')
     }
 }

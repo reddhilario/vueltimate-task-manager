@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column flex-fill">
     <div class="d-flex mb-4 w-100 justify-content-center" style="height: auto">
-      <div class="shadow rounded p-3" id="addTask" style="height: auto; z-index: 1">
+      <div class="shadow rounded p-3" id="addTask">
         <div class="input-group">
           <input
             id="noteTitleInput"
@@ -138,18 +138,15 @@
         </div>
       </div>
     </div>
-
     <div class="w-100 d-flex justify-content-center">
       <div class="d-flex flex-row flex-wrap" style="width: 1200px">
-        <transition-group class="d-flex flex-fill flex-wrap" name="notes-container" tag="div">
-          <NoteComponent
-            v-for="(note, index) in this.notes"
-            :key="index"
-            :notes="note"
-            @delete-note="removeNote"
-            @update-note="updateNote"
-          />
-        </transition-group>
+        <NoteComponent
+          v-for="(note, index) in this.notes"
+          :key="index"
+          :notes="note"
+          :id="index"
+          @click="animate($event.target)"
+        />
       </div>
     </div>
   </div>
@@ -158,24 +155,16 @@
 <script>
 import NoteComponent from './NoteComponent.vue'
 import TagComponent from './TagComponent.vue'
-import { mapGetters, mapActions } from 'vuex'
-// import CloneComponent from './CloneComponent.vue'
-import axios from 'axios'
 export default {
   components: {
     NoteComponent,
     TagComponent
   },
-  computed: {
-    ...mapGetters({
-      notes: 'notes/getNotes'
-    })
-  },
   data() {
     return {
       textAreaElement: null,
       textAreaHeight: null,
-      // notes: [],
+      notes: [],
       tags: [],
       listedTags: [],
       tagName: '',
@@ -211,33 +200,16 @@ export default {
         'pastel-cotton-candy',
         'pastel-silver'
       ],
-      noteData: {
-        title: this.titleInputText,
-        description: this.descriptionTextAreaText
-      },
       titleInputText: '',
-      descriptionTextAreaText: '',
-      isEditing: false
+      descriptionTextAreaText: ''
     }
   },
   mounted() {
-    this.fetchNotes()
+    ;(this.textAreaElement = this.$refs.textArea),
+      (this.textAreaHeight = this.$refs.textArea.clientHeight)
+    console.log('mount')
   },
   methods: {
-    ...mapActions({
-      fetchNotes: 'notes/fetchNotes',
-      addNote: 'notes/addNote',
-      deleteNote: 'notes/deleteNote'
-    }),
-    removeNote(value) {
-      this.deleteNote(value)
-    },
-    updateNote(value) {
-      axios.patch('http://127.0.0.1:8000/api/notes/' + value.id, {
-        title: value.title,
-        description: value.description
-      })
-    },
     clearFields() {
       this.titleInputText = ''
       this.descriptionTextAreaText = ''
@@ -245,14 +217,22 @@ export default {
     animate(value) {
       value.classList.add('noteAnimate')
     },
+    changeTextAreaHeight() {
+      this.textAreaHeight += 10
+      //   this.textAreaElement.clientHeight = this.textAreaElement
+      console.log(this.textAreaheight)
+    },
     saveNote() {
-      this.addNote({
-        title: this.titleInputText,
-        description: this.descriptionTextAreaText
-      })
-      this.clearFields
+      if (!((this.titleInputText.length && this.descriptionTextAreaText.length) === 0)) {
+        this.notes.unshift({
+          title: this.titleInputText,
+          description: this.descriptionTextAreaText
+        })
+        this.clearFields()
+      } else alert('no empty fields SIR')
     },
     createTag() {
+      // console.log('' + typeof this.randomColor())
       this.tags.push({
         name: this.tagName,
         color: this.randomColor()
@@ -300,16 +280,6 @@ export default {
 ::-webkit-scrollbar-thumb {
   border-radius: 15px;
   background: rgb(131, 131, 131);
-}
-.notes-container-move,
-.notes-container-enter-active,
-.notes-container-leave-active {
-  transition: all 0.5s ease;
-}
-.notes-container-enter-from,
-.notes-container-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
 }
 ul {
   list-style-type: none;
