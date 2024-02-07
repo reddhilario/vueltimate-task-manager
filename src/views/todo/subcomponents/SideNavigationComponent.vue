@@ -1,64 +1,42 @@
 <template>
   <div class="w-100">
-    <div class="h-100 container d-flex flex-column justify-content-between">
+    <div class="d-flex flex-column choice expand" ref="choice">
+      <!-- start of individual row-->
+      <div class="d-flex flex-row" style="width: 200px; height: 45px">
+        <i class="fs-5 bi bi-lightbulb col-2 me-3"></i>
+        <p class="text-center text-nowrap" style="margin-top: 6px">Notes</p>
+      </div>
+      <!-- end of individual row-->
+      <!-- start of individual row-->
+      <div class="d-flex flex-row" style="width: 200px; height: 45px">
+        <i class="fs-5 bi bi-bell col-2 me-3"></i>
+        <p class="mt-1 text-center text-nowrap" style="width: 75px; margin-top: 6px">Reminders</p>
+      </div>
+      <!-- end of individual row-->
+      <!-- start of individual row-->
+      <div class="d-flex flex-row" style="width: 200px; height: 45px">
+        <i class="fs-5 bi bi-pencil col-2 me-3"></i>
+        <p class="mt-1 text-center text-nowrap" style="width: 75px; margin-top: 6px">Edit Labels</p>
+      </div>
+      <!-- end of individual row-->
+      <!-- start of individual row-->
+      <div class="d-flex flex-row" style="width: 200px; height: 45px">
+        <i class="fs-5 bi bi-archive col-2 me-3"></i>
+        <p class="mt-1 text-center text-nowrap" style="margin-top: 6px">Archive</p>
+      </div>
+      <!-- end of individual row-->
+      <!-- start of individual row-->
+      <div class="d-flex flex-row" style="width: 200px; height: 45px">
+        <i class="fs-5 bi bi-trash col-2 me-3"></i>
+        <p class="mt-1 text-center text-nowrap" style="margin-top: 6px">Trash</p>
+      </div>
+      <!-- end of individual row-->
+      <!-- 
       <div class="container horizontal-accordion">
         <div :class="this.divClass" @click="expandSideNav">
-          <i class="fs-4 bi bi-lightbulb col-2"></i>
-          <div class="card-body col-10 p-0 d-flex justify-content-center">
-            <h6 class="align-self-center">Notes</h6>
-          </div>
-        </div>
-      </div>
-      <div class="container horizontal-accordion">
-        <div :class="this.divClass" @click="expandSideNav">
-          <i class="fs-4 bi bi-bell col-2"></i>
-          <div class="card-body col-10 p-0 d-flex justify-content-center">
-            <h6 class="align-self-center">Reminders</h6>
-          </div>
-        </div>
-      </div>
-      <div class="container horizontal-accordion">
-        <div :class="this.divClass" @click="expandSideNav">
-          <i class="fs-4 bi bi-pencil col-2"></i>
-          <div class="card-body col-10 p-0 d-flex justify-content-center">
-            <h6 class="align-self-center">Edit Labels</h6>
-          </div>
-        </div>
-      </div>
-      <div class="container horizontal-accordion">
-        <div :class="this.divClass" @click="expandSideNav">
-          <i class="fs-4 bi bi-archive col-2"></i>
-          <div class="card-body col-10 p-0 d-flex justify-content-center">
-            <h6 class="align-self-center">Archive</h6>
-          </div>
-        </div>
-      </div>
-      <div class="container horizontal-accordion">
-        <div :class="this.divClass" ref="choice" @click="expandSideNav">
           <i class="fs-5 bi bi-trash col-2 text-dark align-self-center"></i>
           <div class="card-body col-10 p-0 d-flex justify-content-center">
             <h6 class="align-self-center text-dark">Trash</h6>
-          </div>
-        </div>
-      </div>
-      <!--
-      <div class="row itemDivs container">
-        <div class="col-2 h-75 d-flex align-items-center justify-content-center">
-          <i class="fs-4 bi bi-archive"></i>
-        </div>
-        <div class="col-6 collapse" id="sideBar">
-          <div class="h-100 d-flex align-items-center justify-content-center">
-            <h6 class="">Archive</h6>
-          </div>
-        </div>
-      </div>
-      <div class="row itemDivs container">
-        <div class="col-2 h-75 d-flex align-items-center justify-content-center">
-          <i class="fs-4 bi bi-trash"></i>
-        </div>
-        <div class="col-6 collapse" id="sideBar">
-          <div class="h-100 d-flex align-items-center justify-content-center">
-            <h6 class="">Trash</h6>
           </div>
         </div>
       </div> -->
@@ -72,9 +50,7 @@ export default {
   },
   data() {
     return {
-      choiceElement: null,
-      divClass:
-        'row card choice small text-white mx-2 small rounded-pill bg-warning bg-opacity-25 border-0'
+      choiceElement: null
     }
   },
   watch: {
@@ -108,36 +84,16 @@ export default {
 </script>
 <style scoped>
 .choice {
-  height: 180px;
-  box-sizing: border-box;
-  padding: 0;
+  height: 500px;
+  padding-left: 20px;
   overflow: hidden;
-  float: left;
-  align-items: center;
-  transition: width 0.1s;
-  border-radius: 3px;
+  transition: width 0.5s;
 }
 .expand {
-  width: 25%;
-
-  height: 40px;
-}
-.unset {
-  width: 16%;
-  color: black !important;
-  background-color: #ddd !important;
+  width: 200px;
 }
 .small {
-  width: 45px;
-  height: 40px;
-}
-.small > div {
-  opacity: 0;
-}
-.unset > div > p {
-  opacity: 0;
-}
-.expand > div {
-  transition-delay: 200ms;
+  width: 50px;
+  font-size: 1em;
 }
 </style>

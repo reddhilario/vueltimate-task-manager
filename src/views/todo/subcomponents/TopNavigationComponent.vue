@@ -1,9 +1,9 @@
 <template>
   <div class="p-0">
-    <nav class="navbar navbar-light bg-light p-0">
+    <nav id="idddd" class="navbar navbar-light bg-light p-0">
       <div class="w-100 d-flex">
         <div class="row navBarDiv ms-3 me-3">
-          <div class="col-6 h-100">
+          <div class="col-6 h-100 ps-0">
             <btn
               class="fs-3 btn bi bi-list p-0"
               data-bs-target="#sideBar"
@@ -31,27 +31,27 @@
           </div>
           <div class="navBarDiv d-flex">
             <div class=""><button class="fs-4 bi bi-grid-3x3-gap-fill btn"></button></div>
-            <div class="">
-              <div class="">
-                <button
-                  class="fs-4 bi bi-person-circle btndropdown-toggle border-0 bg-transparent"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  data-bs-auto-close="outside"
-                ></button>
+            <div class="d-flex flex-column justify-content-center">
+              <button
+                class="fs-4 bi bi-person-circle btndropdown-toggle border-0 bg-transparent"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                data-bs-auto-close="outside"
+              ></button>
 
-                <div class="dropdown-menu dropdown-menu-end">
-                  <div class="d-flex flex-column">
-                    <div class="align-self-center"><p class="text-center">name</p></div>
-                    <div class="align-self-center"><p>email</p></div>
-                    <hr class="hr" />
-                    <div class="align-self-center">
-                      <button type="button" class="btn btn-outline-danger bi bi-box-arrow-right">
-                        Sign Out
-                      </button>
-                    </div>
-                  </div>
+              <div class="dropdown-menu dropdown-menu-end">
+                <div class="d-flex flex-column">
+                  <i
+                    class="bi bi-person-circle border-0 bg-transparent text-center"
+                    style="font-size: 70px"
+                  ></i>
+                  <p class="text-center m-0">Juan Dela Cruz</p>
+                  <p class="text-center text-secondary" style="font-size: 12px">juan@example.com</p>
+
+                  <button type="button" class="btn btn-outline-danger bi bi-box-arrow-right">
+                    Sign Out
+                  </button>
                 </div>
               </div>
             </div>
