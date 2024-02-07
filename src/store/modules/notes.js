@@ -1,7 +1,9 @@
 import axios from "axios"
 
 const state = {
-    notes: []
+    notes: [],
+    taskIsActive: false,
+    newPageIsActive: true
 }
 const mutations = {
     SET_NOTES(state, note) {
@@ -20,6 +22,10 @@ const mutations = {
                 console.log('passsed id: ' + id)
             }
         })
+    },
+    FLIP_STATUS(state) {
+        state.taskIsActive = !state.taskIsActive
+        state.newPageIsActive = !state.newPageIsActive
     }
 }
 const actions = {
@@ -59,10 +65,21 @@ const actions = {
         axios.delete('http://127.0.0.1:8000/api/notes/' + id)
 
     },
+    flipStatus({
+        commit
+    }) {
+        commit('FLIP_STATUS')
+    }
 }
 const getters = {
     getNotes(state) {
         return state.notes
+    },
+    getTaskIsActiveStatus(state) {
+        return state.taskIsActive
+    },
+    getNewPageIsActiveStatus(state) {
+        return state.newPageIsActive
     }
 }
 

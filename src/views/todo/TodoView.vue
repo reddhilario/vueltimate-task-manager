@@ -19,11 +19,18 @@ import SideNavigationComponent from './subcomponents/SideNavigationComponent.vue
 import TaskContainerComponent from './subcomponents/MainComponent.vue'
 import NewPageComponent from './subcomponents/NewPageComponent.vue'
 
+import { mapGetters } from 'vuex'
+
 export default {
+  computed: {
+    ...mapGetters({
+      taskIsActive: 'notes/getTaskIsActiveStatus',
+      newPageIsActive: 'notes/getNewPageIsActiveStatus'
+    })
+  },
   data() {
     return {
-      sideBarOpen: false,
-      newPageIsActive: true
+      sideBarOpen: false
     }
   },
   components: {
