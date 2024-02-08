@@ -2,7 +2,7 @@
   <div class="w-100">
     <div class="d-flex flex-column choice expand" ref="choice">
       <!-- start of individual row-->
-      <div class="d-flex flex-row" style="width: 200px; height: 45px" @click="flipStatus">
+      <div class="d-flex flex-row" style="width: 200px; height: 45px" @click="changeCurrentPage('Tasks')">
         <i class="fs-5 bi bi-lightbulb col-2 me-3"></i>
         <p class="text-center text-nowrap" style="margin-top: 6px">Notes</p>
       </div>
@@ -32,7 +32,7 @@
       </div>
       <!-- end of individual row-->
       <!-- start of individual row-->
-      <div class="d-flex flex-row" style="width: 200px; height: 45px" @click="flipStatus">
+      <div class="d-flex flex-row" style="width: 200px; height: 45px" @click="changeCurrentPage('NewPage')">
         <i class="fs-5 bi bi-trash col-2 me-3"></i>
         <p class="mt-1 text-center text-nowrap" style="margin-top: 6px">New Page</p>
       </div>
@@ -58,24 +58,20 @@ export default {
   },
   methods: {
     ...mapActions({
-      flipStatus: 'notes/flipStatus'
+      flipStatus: 'notes/flipStatus',
+      changeCurrentPage: 'notes/changeCurrentPage'
     }),
     sideWatch() {
       alert('triggered')
     },
     expandSideNav() {
-      console.log('from Side bar component: ' + this.sideBarStatus)
       if (this.choiceElement.classList.contains('expand')) {
-        console.log('has expand')
         this.choiceElement.classList.remove('expand')
         this.choiceElement.classList.add('small')
       } else if (this.choiceElement.classList.contains('small')) {
-        console.log('has small')
         this.choiceElement.classList.remove('small')
         this.choiceElement.classList.add('expand')
       }
-
-      // console.log(this.choiceElement)
     }
   },
   mounted() {

@@ -1,7 +1,14 @@
 import axios from "axios"
-
+import Tasks from '../../views/todo/subcomponents/MainComponent.vue'
+import NewPage from '../../views/todo/subcomponents/NewPageComponent.vue'
+import {ref} from 'vue'
 const state = {
     notes: [],
+    pages:{
+        Tasks,
+        NewPage
+    },
+    currentPage: ref('Tasks'),
     taskIsActive: false,
     newPageIsActive: true
 }
@@ -16,16 +23,11 @@ const mutations = {
         state.notes.forEach((note, index) => {
             if (note['id'] == id) {
                 state.notes.splice(index, 1)
-                console.log(state.notes)
-                console.log('index: ' + index)
-                console.log('current note id: ' + note['id'])
-                console.log('passsed id: ' + id)
             }
         })
     },
-    FLIP_STATUS(state) {
-        state.taskIsActive = !state.taskIsActive
-        state.newPageIsActive = !state.newPageIsActive
+    CHANGE_CURRENT_PAGE(state, page) {
+        state.currentPage = page
     }
 }
 const actions = {
@@ -45,19 +47,11 @@ const actions = {
                     }
                 }
             )
-            .then(function (response) {
-                console.log(response)
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
     },
     fetchNotes({
         commit
     }) {
         axios.get('http://127.0.0.1:8000/api/notes').then((response) => {
-            console.log(response.data)
-
             commit('SET_NOTES', response.data)
         })
     },
@@ -65,11 +59,9 @@ const actions = {
         axios.delete('http://127.0.0.1:8000/api/notes/' + id)
 
     },
-    flipStatus({
-        commit
-    }) {
-        console.log('flipped')
-        commit('FLIP_STATUS')
+    changeCurrentPage({commit}, page)
+    {
+        commit('CHANGE_CURRENT_PAGE', page)
     }
 }
 const getters = {
@@ -81,6 +73,12 @@ const getters = {
     },
     getNewPageIsActiveStatus(state) {
         return state.newPageIsActive
+    },
+    getPages(state){
+        return state.pages
+    },
+    getCurrentPage(state){
+        return state.currentPage
     }
 }
 
