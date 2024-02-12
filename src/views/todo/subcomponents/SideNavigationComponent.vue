@@ -2,7 +2,7 @@
   <div class="w-100">
     <div class="d-flex flex-column choice expand" ref="choice">
       <!-- start of individual row-->
-      <div class="d-flex flex-row" style="width: 200px; height: 45px">
+      <div class="d-flex flex-row" style="width: 200px; height: 45px" @click="changeCurrentPage('Tasks')">
         <i class="fs-5 bi bi-lightbulb col-2 me-3"></i>
         <p class="text-center text-nowrap" style="margin-top: 6px">Notes</p>
       </div>
@@ -31,19 +31,17 @@
         <p class="mt-1 text-center text-nowrap" style="margin-top: 6px">Trash</p>
       </div>
       <!-- end of individual row-->
-      <!-- 
-      <div class="container horizontal-accordion">
-        <div :class="this.divClass" @click="expandSideNav">
-          <i class="fs-5 bi bi-trash col-2 text-dark align-self-center"></i>
-          <div class="card-body col-10 p-0 d-flex justify-content-center">
-            <h6 class="align-self-center text-dark">Trash</h6>
-          </div>
-        </div>
-      </div> -->
+      <!-- start of individual row-->
+      <div class="d-flex flex-row" style="width: 200px; height: 45px" @click="changeCurrentPage('NewPage')">
+        <i class="fs-5 bi bi-trash col-2 me-3"></i>
+        <p class="mt-1 text-center text-nowrap" style="margin-top: 6px">New Page</p>
+      </div>
+      <!-- end of individual row-->
     </div>
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   props: {
     sideBarStatus: Boolean
@@ -59,22 +57,21 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      flipStatus: 'notes/flipStatus',
+      changeCurrentPage: 'notes/changeCurrentPage'
+    }),
     sideWatch() {
       alert('triggered')
     },
     expandSideNav() {
-      console.log('from Side bar component: ' + this.sideBarStatus)
       if (this.choiceElement.classList.contains('expand')) {
-        console.log('has expand')
         this.choiceElement.classList.remove('expand')
         this.choiceElement.classList.add('small')
       } else if (this.choiceElement.classList.contains('small')) {
-        console.log('has small')
         this.choiceElement.classList.remove('small')
         this.choiceElement.classList.add('expand')
       }
-
-      // console.log(this.choiceElement)
     }
   },
   mounted() {
