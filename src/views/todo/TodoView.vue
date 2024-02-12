@@ -6,8 +6,6 @@
         <SideNavigationComponent :sideBarStatus="this.sideBarOpen" />
       </div>
       <div class="d-flex flex-fill justify-content-center">
-        <!-- <TaskContainerComponent v-if="taskIsActive" />
-        <NewPageComponent v-if="newPageIsActive" /> -->
         <component :is="pages[currentPage]"></component>
       </div>
     </div>
@@ -36,10 +34,10 @@
         }
         },
         components: {
-        TopNavigationComponent,
-        SideNavigationComponent,
-        TaskContainerComponent,
-        NewPageComponent
+            TopNavigationComponent,
+            SideNavigationComponent,
+            TaskContainerComponent,
+            NewPageComponent
         },
         methods: {
         toggleSideBarOpen() {
